@@ -10,6 +10,83 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
+const auth = firebase.auth()
+
+document.getElementById('registerButton').addEventListener('click', function() {
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            console.log("User registered successfully");
+            // Switch to main content or handle as needed
+        })
+        .catch((error) => {
+            let errorMessage = "";
+            switch(error.code) {
+              case "auth/weak-password":
+                errorMessage = "The password must be 6 characters long or more.";
+                break;
+              case "auth/email-already-in-use":
+                errorMessage = "The email address is already in use by another account.";
+                break;
+              case "auth/invalid-email":
+                errorMessage = "The email address is not valid.";
+                break;
+              default:
+                errorMessage = "An error occurred. Please try again.";
+            }
+            console.error(error.code, errorMessage);
+            // Display the error message to the user
+            alert(errorMessage);
+          });
+});
+
+document.getElementById('loginButton').addEventListener('click', function() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            console.log("User logged in successfully");
+            // Handle successful login, e.g., display main content
+        })
+        .catch((error) => {
+            let message = "";
+            switch (error.code) {
+                case "auth/invalid-email":
+                    message = "Invalid email format.";
+                    break;
+                case "auth/user-disabled":
+                    message = "User account is disabled.";
+                    break;
+                case "auth/user-not-found":
+                case "auth/wrong-password":
+                    message = "Invalid login credentials.";
+                    break;
+                case "auth/invalid-login-credentials":
+                    message = "Login credentials are invalid.";
+                    break;
+                default:
+                    message = "An error occurred during login.";
+            }
+            console.error(error.code, message);
+            alert(message);
+        });});
+
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        // User is signed in, show main content
+    } else {
+        document.getElementById('loginSection').style.display = 'block';
+        document.getElementById('mainContent').style.display = 'none';
+        // No user is signed in, show login section
+    }
+});
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const record = document.getElementById('record');
