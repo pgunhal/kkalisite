@@ -43,7 +43,17 @@ document.getElementById('loginButton').addEventListener('click', function() {
     const loginError = document.getElementById('loginError');
 
     firebase.auth().signInWithEmailAndPassword(email, password)
+
+
+//     //////////
         .then((userCredential) => {
+//             const addAdminRole = firebase.functions().httpsCallable('addAdminRole');
+// addAdminRole({ email: 'kkalisite@gmail.com' }).then(result => {
+//     console.log(result);
+// });
+
+// console.log("????");
+// //REMOVE!!!
             window.location.href = 'main.html'; // Redirect to the main content page on successful login
         })
         .catch((error) => {

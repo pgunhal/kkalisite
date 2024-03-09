@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="login.css"> <!-- Assuming same CSS can be applied -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="firebaseInit.js"></script> <!-- Firebase initialization script -->
+</head>
+<body>
+    <div id="authContainer">
+        <div id="loginSection">
+            <h2>Admin Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <p id="loginError" class="error-message"></p>
+            <button id="loginButton">Login</button>
+        </div>
+    </div>
+
+    <script src="adminLogin.js"></script> <!-- Separate JS for admin login logic -->
+</body>
+</html>
