@@ -102,6 +102,6 @@ audio {
   z-index: 1;
 }
 
-#storyText {
+#authorName, #storyText {
     text-align: left;
 }

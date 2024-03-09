@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kannada Story Recording - Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage-compat.js"></script>
+    <script src="firebaseInit.js"></script> <!-- Initialize Firebase -->
+    
+</head>
+<body>
+    <div id="authContainer">
+        <div id="loginSection">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <p id="loginError" class="error-message"></p>
+            <button id="loginButton">Login</button>
+            <button id="showRegister">Register</button>
+        </div>
+
+        <div id="registerSection" style="display:none;">
+            <h2>Register</h2>
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="password" id="registerPassword" placeholder="Password">
+            <p id="registerError" class="error-message"></p>
+            <button id="registerButton">Register</button>
+            <button id="showLogin">Login</button>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
