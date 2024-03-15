@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let rec, audioChunks = [];
     let blob; // Define blob outside to make it accessible to the upload click event
 
+    //EDIT HERE TO CHANGE WEEK + STORY
+    let week = "week 1";
+    let storyName = "akbar_birbal";
+
 
     const db = firebase.firestore();
 
@@ -39,8 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
 
     function fetchStoryContent() {
-      db.collection("stories").doc("akbar_birbal").get().then(doc => {
-        //EDIT HERE TO CHANGE THE STORY!!!
+      db.collection("stories").doc(storyName).get().then(doc => {
         if (doc.exists) {
           const storyData = doc.data();
         //   document.getElementById('storyText').textContent = storyData.content;
@@ -83,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function() {
     upload.onclick = () => {
         if (blob) {
             sendData(blob);
-            // upload.style.display = 'none'; // Optionally hide the upload button after uploading
         } else {
             console.log('No recording available to upload.');
             alert("Audio Error. File upload failed.");
@@ -91,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     function sendData(blob) {
-        const audioRef = storage.ref(`${document.getElementById('studentCenter').value}_${document.getElementById('studentName').value}_${new Date().getTime()}.mp3`);
+        const audioRef = storage.ref(`${document.getElementById('studentCenter').value}_${document.getElementById('studentName').value}_${week}_${new Date().getTime()}.mp3`);
         audioRef.put(blob).then(snapshot => {
             console.log('Uploaded file');
             snapshot.ref.getDownloadURL().then(downloadURL => {
