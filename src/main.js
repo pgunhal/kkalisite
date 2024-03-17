@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //EDIT HERE TO CHANGE WEEK + STORY
     let week = "week 1";
-    let storyName = "akbar_birbal";
+    let storyName = "tenali_ramakrishna";
 
 
     const db = firebase.firestore();
