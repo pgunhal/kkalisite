@@ -93,7 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     function sendData(blob) {
-        const audioRef = storage.ref(`${document.getElementById('studentCenter').value}_${document.getElementById('studentName').value}_${week}_${new Date().getTime()}.mp3`);
+        const selectedCenter = document.querySelector('input[name="studentCenter"]:checked').value;
+        const audioRef = storage.ref(`${selectedCenter}_${document.getElementById('studentName').value}_${week}_${new Date().getTime()}.mp3`);
         audioRef.put(blob).then(snapshot => {
             console.log('Uploaded file');
             snapshot.ref.getDownloadURL().then(downloadURL => {
