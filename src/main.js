@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let blob; // Define blob outside to make it accessible to the upload click event
 
     //EDIT HERE TO CHANGE WEEK + STORY
-    let week = "week 2";
-    let storyName = "tenali_ramakrishna2";
+    let week = "week 3";
+    let storyName = "kitturu_rani";
 
 
     const db = firebase.firestore();
