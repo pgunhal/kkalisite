@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
                 const audioName = document.createElement('span');
                 audioName.className = 'audio-name';
-                audioName.textContent = "Week " + fileWeek + ": " + fileName; // Display extracted name
+                audioName.textContent = fileWeek+ " " + fileName; // Display extracted name
                 
                 audioTable.appendChild(audioPlayer);
                 audioTable.appendChild(audioName);
