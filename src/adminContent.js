@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             });
         }).catch((error) => {
-            console.log("Error listing files: ", error);
         });
     };
 
@@ -72,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 list.appendChild(listItem);
             }
         }).catch((error) => {
-            console.log("Error getting file URL: ", error);
         });
     };
 });
@@ -105,10 +103,8 @@ document.addEventListener("DOMContentLoaded", async function() {
             return;
         }
 
-        console.log("Stories found: ", querySnapshot.size); // Log number of stories fetched
 
         querySnapshot.forEach((doc) => {
-            console.log("Story Document: ", doc.id, doc.data()); // Log each document
 
             const storyData = doc.data();
             
