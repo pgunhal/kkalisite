@@ -4,27 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Content</title>
-    <link rel="stylesheet" href="adminContent.css"> <!-- Reference your main CSS file to maintain theme -->
+    <link rel="stylesheet" href="adminContent.css">
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage-compat.js"></script>
-    <script src="firebaseInit.js"></script> <!-- Firebase initialization -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <script src="firebaseInit.js"></script>
+    <script src="adminContent.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Audio Management</h1>
+        <h1>Teacher Management</h1>
+
+        <h2>Set Story</h2>
+        <div class="form-section">
+            <label for="weekInput">Enter Week Number:</label>
+            <input type="number" id="weekInput" placeholder="Enter week number" min="1" required>
+        </div>
+    
+        <div class="form-section">
+            <label for="storySelect">Select Story:</label>
+            <select id="storySelect">
+                <option value="" disabled selected>Select a story</option>
+            </select>
+        </div>
+    
+        <button id="setWeekStory" class="btn-primary">Set Week and Story</button>
+        
+        <h2>Audio Management</h2>
+        <div class="form-section">
+            <label for="audioWeekSelect">Filter by Week:</label>
+            <input type="number" id="audioWeekSelect" placeholder="Enter week number to filter" min="1">
+            <button id="filterAudioButton" class="btn-secondary">Filter Audios</button>
+        </div>
+
         <section id="CUPAudios" class="audio-section">
-            <h2>Cupertino</h2>
+            <h3>Cupertino</h2>
             <ul id="cupList" class="audio-list"></ul>
         </section>
-        <section id="FREAudios" class="audio-section">
-            <h2>Fremont</h2>
-            <ul id="freList" class="audio-list"></ul>
-        </section>
         <section id="MILAudios" class="audio-section">
-            <h2>Milpitas</h2>
+            <h3>Milpitas</h2>
             <ul id="milList" class="audio-list"></ul>
         </section>        
     </div>
-    <script src="adminContent.js"></script>
 </body>
 </html>
