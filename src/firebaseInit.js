@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var firebaseConfig = {
     apiKey: "AIzaSyDa8GKRuPLjq67gQ9I5EO_YQdW1aA0tM0w",
     authDomain: "kkalisite-4fc4e.firebaseapp.com",
