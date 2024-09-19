@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const storage = firebase.storage();
     const storageRef = storage.ref(); // Reference to storage root
 
-    const specifiedWeek = "1"; 
+    const specifiedWeek = ""; 
     ////////THIS IS THE WEEK!!! CHANGE HERE!!!!! 
 
     const listAllFiles = async () => {
-        const prefixes = ['cup', 'mil'];
+        const prefixes = ['cup', 'fre', 'mil'];
         const week = 2;
 
         storageRef.listAll().then((result) => {
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
             // Check if the extracted week matches the specified week variable
 
-            if(fileWeek === specifiedWeek) { //CHANGE LATER!!!!
-                // if (true) {
+            // if(fileWeek === specifiedWeek) { //CHANGE LATER!!!!
+                if (true) {
                 const list = document.getElementById(listId);
                 const listItem = document.createElement('li');
                 
