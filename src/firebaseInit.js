@@ -8,5 +8,7 @@ var firebaseConfig = {
     measurementId: "G-YGWSDLB7HW"
 };
 
+
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

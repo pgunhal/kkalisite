@@ -46,6 +46,11 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #8fbd9e;
+}
+
+
 #error-message {
     color: red;
     font-size: 0.8rem;
