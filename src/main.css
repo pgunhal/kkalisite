@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(95deg, #f3e40eb8 50%, #b60606b3 50%);
+    background: linear-gradient(95deg, #f3e40eb8 50%, #a10303d5 50%);
     color: #333;
     margin: 0;
     padding: 20px;
@@ -15,6 +15,8 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     width: 90%;
     max-width: 800px; /* Max width for large screens, adjust as needed */
+    animation: fadeIn 0.5s ease-in-out; /* Optional animation */
+
 }
 
 h1, h2, h3 {
