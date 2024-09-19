@@ -1,60 +1,70 @@
-body, h1, h2, input, button {
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #f0f4c3);
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #authContainer {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 320px;
+    max-width: 400px;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 h2 {
     color: #333;
-    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0288d1;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
+    padding: 14px;
+    border-radius: 12px;
     border: none;
-    color: #fff;
-    background-color: #4CAF50;
+    color: #ffffff;
+    background-color: #0288d1;
     cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #8fbd9e;
+    background-color: #0277bd;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
 }
-
 
 #error-message {
-    color: red;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
+    color: #d32f2f;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
 }
-
-/* Additional styles can go here */

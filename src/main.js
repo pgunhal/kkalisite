@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(stream => {
             handlerFunction(stream);
         });}
-        catch {
+    catch {
             alert("Microphone permission denied!");
         }
 

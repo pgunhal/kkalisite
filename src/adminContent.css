@@ -1,92 +1,119 @@
+/* Body and Container */
 body {
-    background-color: #f9f9f9;
-    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 50px 0;
 }
 
 .container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin: auto;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 800px;
+    max-width: 1000px;
+    margin: auto;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 h1, h2 {
-    color: #444;
-    margin-bottom: 10px;
-}
-
-.form-section {
+    font-weight: 600;
+    color: #333;
     margin-bottom: 20px;
 }
 
+h1 {
+    font-size: 2.5em;
+    color: #0288d1;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+/* Form Section */
+.form-section {
+    margin-bottom: 30px;
+}
+
 .form-section label {
+    font-weight: 500;
+    margin-bottom: 8px;
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
+    color: #555;
 }
 
 .form-section input, .form-section select {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
 }
 
-.btn-primary, .btn-secondary {
-    background-color: #4CAF50;
+.form-section input:focus, .form-section select:focus {
+    outline: none;
+    border-color: #0288d1;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button.btn-primary {
+    background-color: #0288d1;
     color: #fff;
-    padding: 10px 15px;
+    padding: 14px 20px;
+    border-radius: 12px;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
-    display: block;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
 }
 
-.btn-secondary {
-    background-color: #4CAF50;
+button.btn-primary:hover {
+    background-color: #0277bd;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.btn-primary:hover, .btn-secondary:hover {
-    background-color: #8fbd9e;
-}
-
-h1, h2, h3{
-    color: #444;
-}
-
+/* Audio List and Players */
 .audio-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin-bottom: 20px;
 }
 
 .audio-table {
-    background-color: #e9e9e9;
-    border-radius: 4px;
-    padding: 10px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     display: flex;
+    justify-content: space-between;
     align-items: center;
-}
-
-.audio-table div {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .audio-player {
-    width: auto;
-    margin-right: 10px;
+    width: 100%;
+    margin-right: 20px;
 }
 
 .audio-name {
-    font-weight: bold;
-    margin-left: 10px;
+    font-weight: 600;
 }
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
