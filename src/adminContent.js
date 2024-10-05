@@ -74,3 +74,66 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     };
 });
+
+// For Admin Story Management
+document.addEventListener("DOMContentLoaded", async function() {
+    const db = firebase.firestore();
+    const storySelect = document.getElementById('storySelect');
+    const weekInput = document.getElementById('weekInput');
+
+    if (!storySelect) {
+        console.error("storySelect element is missing in the HTML.");
+        return;
+    }
+
+    if (!weekInput) {
+        console.error("weekInput element is missing in the HTML.");
+        return;
+    }
+
+    try {
+        const querySnapshot = await db.collection("stories").get();
+        
+        if (querySnapshot.empty) {
+            console.error("No stories found in Firestore!");
+            return;
+        }
+
+
+        querySnapshot.forEach((doc) => {
+
+            const storyData = doc.data();
+            
+            if (storyData && storyData.title) {
+                const option = document.createElement("option");
+                option.value = doc.id;
+                option.textContent = storyData.title;
+                storySelect.appendChild(option);
+            } else {
+                console.warn(`Document ${doc.id} does not contain a 'title' field.`);
+            }
+        });
+    } catch (error) {
+        console.error("Error loading stories: ", error);
+    }
+
+    document.getElementById('setWeekStory').addEventListener('click', async () => {
+        const selectedStory = storySelect.value;
+        const enteredWeek = weekInput.value;
+
+        if (!selectedStory || !enteredWeek) {
+            alert("Please select a story and enter a valid week number.");
+            return;
+        }
+
+        try {
+            await db.collection("adminSettings").doc("story").set({
+                storyName: selectedStory,
+                week: enteredWeek
+            });
+            alert("Week and Story updated successfully!");
+        } catch (error) {
+            console.error("Error updating week and story:", error);
+        }
+    });
+});
