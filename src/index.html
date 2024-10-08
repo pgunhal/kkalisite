@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kannada Story Recording - Login</title>
+    <title>ಕನ್ನಡ ಕಲಿ</title>
     <link rel="stylesheet" href="main.css">
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
@@ -11,8 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-functions-compat.js"></script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src="firebaseInit.js"></script> <!-- Initialize Firebase -->
-    
+    <script src="firebaseInit.js"></script> 
 </head>
 <body>
     <div id="mainContent">
@@ -24,6 +23,9 @@
         <p id="authorName"></p>
         <p id="storyText"></p>
         
+        <button id="toggleWeekButton" class="btn-primary">View Previous Week</button>
+
+
         <form id="recordForm">
             <h3>Record</h3>
             <label for="studentName">Name:</label>
@@ -43,7 +45,6 @@
                     <label for="centerFRE">FRE</label>
                 </div>
             </div>
-            
 
             <p>
                 <button type="button" id="record">Record</button>
@@ -54,12 +55,12 @@
             </p>
             <button type="button" id="upload">Upload</button>
         </form>
+
     </div>
 
     <button id="adminLoginButton">Admin Login</button>
 
     <script>
-        // Redirect to admin login page when the admin login button is clicked
         document.getElementById('adminLoginButton').addEventListener('click', function() {
             window.location.href = 'adminLogin.html';
         });

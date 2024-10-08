@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const audioWeekSelect = document.getElementById('audioWeekSelect');
     const filterAudioButton = document.getElementById('filterAudioButton');
 
-    let specifiedWeek = ""; 
+    let specifiedWeek = "", prevWeek = "", prevStory = ""; 
 
     filterAudioButton.addEventListener('click', () => {
         specifiedWeek = audioWeekSelect.value;
@@ -75,7 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 });
 
-// For Admin Story Management
+
+
 document.addEventListener("DOMContentLoaded", async function() {
     const db = firebase.firestore();
     const storySelect = document.getElementById('storySelect');
@@ -125,12 +126,32 @@ document.addEventListener("DOMContentLoaded", async function() {
             alert("Please select a story and enter a valid week number.");
             return;
         }
+        
+
+        // Get the currently selected story and week from Firestore
+        await db.collection("adminSettings").doc("story").get().then(doc => {
+        if (doc.exists) {
+            const settingsData = doc.data();
+            prevWeek = settingsData.week;
+            prevStory = settingsData.storyName;
+
+            db.collection("adminSettings").doc("prev_story").set({
+                storyName: prevStory,
+                week: prevWeek
+            });
+
+        } 
+        }).catch(error => {
+        console.error("Error getting active week and story:", error);
+        document.getElementById('weekDisplay').textContent = "Error loading week.";
+         });
 
         try {
             await db.collection("adminSettings").doc("story").set({
                 storyName: selectedStory,
                 week: enteredWeek
             });
+
             alert("Week and Story updated successfully!");
         } catch (error) {
             console.error("Error updating week and story:", error);
