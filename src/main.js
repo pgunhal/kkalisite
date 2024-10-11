@@ -94,3 +94,71 @@ document.addEventListener("DOMContentLoaded", function() {
 
     fetchActiveStoryAndWeek();
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const record = document.getElementById('record');
+    const stopRecord = document.getElementById('stopRecord');
+    const upload = document.getElementById('upload'); // Reference to the upload button
+    const recordedAudio = document.getElementById('recordedAudio');
+    let rec, audioChunks = [];
+    let blob; // Define blob outside to make it accessible to the upload click event
+
+    try { 
+        navigator.mediaDevices.getUserMedia({audio:true})
+            .then(stream => {
+                handlerFunction(stream);
+            });
+    } catch {
+        alert("Microphone permission denied!");
+    }
+
+    function handlerFunction(stream) {
+        rec = new MediaRecorder(stream);
+
+        rec.ondataavailable = e => {
+            audioChunks.push(e.data);
+            if (rec.state === "inactive") {
+                blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
+                recordedAudio.src = URL.createObjectURL(blob);
+                recordedAudio.controls = true;
+                recordedAudio.autoplay = true;
+                upload.style.display = 'inline'; // Show the upload button
+            }
+        };
+    }
+
+    upload.onclick = () => {
+        if (blob) {
+            sendData(blob);
+        } else {
+            alert("Audio Error. File upload failed.");
+        }
+    };
+
+    function sendData(blob) {
+        const selectedCenter = document.querySelector('input[name="studentCenter"]:checked').value;
+        const audioRef = storage.ref(`${selectedCenter}_${document.getElementById('studentName').value}_week${week}_${new Date().getTime()}.mp3`);
+        audioRef.put(blob).then(snapshot => {
+            snapshot.ref.getDownloadURL().then(downloadURL => {
+                alert("File uploaded successfully.");
+            });
+        }).catch(error => {
+            console.error('Upload failed', error);
+            alert("Upload Error. File upload failed.");
+        });
+    }
+
+    record.onclick = () => {
+        record.disabled = true;
+        stopRecord.disabled = false;
+        audioChunks = [];
+        rec.start();
+    };
+
+    stopRecord.onclick = () => {
+        record.disabled = false;
+        stopRecord.disabled = true;
+        rec.stop();
+    };
+});
